@@ -1,0 +1,40 @@
+# Ref: https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: energi3
+spec:
+  selector:
+    matchLabels:
+      app: energi3 
+  serviceName: "energi3"
+  replicas: 1 
+  minReadySeconds: 10 # by default is 0
+  template:
+    metadata:
+      labels:
+        app: energi3 
+    spec:
+      terminationGracePeriodSeconds: 10
+      containers:
+      - name: energi3
+        image: energi3:latest
+        ports:
+        - containerPort: 39797 # https://wiki.energi.world/docs/guides/core-node-parameters
+          name: rpc
+        volumeMounts:
+        - name: chain-data
+          mountPath: /home/ops/.energicore3 # ops user data dir
+        resources: # Ref: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
+          limits:
+            memory: "4096Mi"
+            cpu: "2048m"
+  volumeClaimTemplates:
+  - metadata:
+      name: chain-data
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      storageClassName: "ebs"
+      resources:
+        requests:
+          storage: 100Gi

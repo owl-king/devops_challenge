@@ -1,0 +1,1 @@
+Write a simple build and deployment pipeline for the above using groovy / Jenkinsfile, Travis CI or Gitlab CI

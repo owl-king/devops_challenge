@@ -1,0 +1,1 @@
+K8S Awesomeness: Write a Kubernetes StatefulSet to run the above, using persistent volume claims and resource limits.
