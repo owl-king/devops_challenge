@@ -16,8 +16,8 @@ format:
 compile:
   stage: build
   script:
-    - mkdir -p mybinaries
-    - go build -o mybinaries ./...
+    - mkdir -p export
+    - go build -o export ./...
   artifacts:
     paths:
-      - mybinaries
+      - export

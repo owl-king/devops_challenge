@@ -1,6 +1,6 @@
 #/bin/bash
 
-# File all the files with .mp4 extension and get its owner
+# Find all the files with .mp4 extension and get its owner
 # user is column 3
 # filename is column 9
 

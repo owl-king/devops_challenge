@@ -1,3 +1,12 @@
+I use 2 steps build to build the target image. Ubuntu does not come with wget or curl so I use downloader
+- downloader: download the files and check sum
+- copy binary to final image. 
+
+Use `run.sh` to build and scan on your machine. Note that it is hardcoded with url for m1 arm
+
+Output: [./Dockerfile](Dockerfile) [./run.sh](run.sh)
+Final output from trivy:
+```bash
 
 energi3-local (ubuntu 24.04)
 ============================
@@ -27,4 +36,4 @@ Total: 4 (HIGH: 3, CRITICAL: 1)
 │                                     │                │          │        │                   │                 │ CONTINUATION frames causes DoS                               │
 │                                     │                │          │        │                   │                 │ https://avd.aquasec.com/nvd/cve-2023-45288                   │
 └─────────────────────────────────────┴────────────────┴──────────┴────────┴───────────────────┴─────────────────┴──────────────────────────────────────────────────────────────┘
-
+```
